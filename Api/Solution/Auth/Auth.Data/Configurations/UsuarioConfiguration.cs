@@ -13,8 +13,8 @@ namespace Auth.Data.Configurations
             builder.Property(m => m.Documento).HasColumnType("VARCHAR(20)").IsRequired();
             builder.Property(m => m.Email).HasColumnType("VARCHAR(60)").IsRequired();
             builder.Property(m => m.Senha).HasColumnType("VARCHAR(40)").IsRequired();
-            builder.Property(m => m.DataCriacao).HasDefaultValueSql("GetDate()");
-            builder.Property(m => m.DataAlteracao).HasColumnType("VARCHAR(100)");
+            builder.Property(m => m.DataCriacao).HasColumnType("DATETIME").HasDefaultValueSql("GetDate()");
+            builder.Property(m => m.DataAlteracao).HasColumnType("DATETIME");
         }
     }
 }
