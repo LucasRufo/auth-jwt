@@ -18,10 +18,10 @@ namespace Auth.Biz.Validations
 
             RuleFor(m => m.Email).Custom((email, context) =>
             {
-                string pattern = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+                string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
 
                 if (!Regex.IsMatch(email, pattern))
-                    context.AddFailure("To", "Email Inválido");
+                    context.AddFailure("Email", "Email Inválido");
             });
 
             RuleFor(m => m.Documento)

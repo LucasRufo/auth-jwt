@@ -1,7 +1,7 @@
 ﻿using Auth.Biz.Interface;
 using Auth.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace Auth.Api.Controllers
 {
@@ -16,13 +16,14 @@ namespace Auth.Api.Controllers
             _service = service;
         }
 
-        [HttpGet]
-        public ActionResult<dynamic> CriarUsuario(Usuario user)
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult CriarUsuario(Usuario user)
         {
             var ret = _service.CriarUsuario(user);
 
             if (ret.IsValid)
-                return Ok(ret.Objeto);
+                return Ok(new { Success = true });
             else
                 return BadRequest(ret.Erros);
         }

@@ -3,6 +3,7 @@ using Auth.Biz.Validations;
 using Auth.Data;
 using Auth.Data.Context;
 using FluentValidation.Results;
+using System;
 
 namespace Auth.Biz
 {
@@ -22,6 +23,8 @@ namespace Auth.Biz
 
             if (!results.IsValid)
                 return new Return(results.Errors);
+
+            user.DataCriacao = DateTime.Now;
 
             _context.Add(user);
             _context.SaveChanges();

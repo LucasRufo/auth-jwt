@@ -1,3 +1,5 @@
+using Auth.Biz;
+using Auth.Biz.Interface;
 using Auth.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,6 +22,8 @@ namespace Auth.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IUsuarioService, UsuarioService>();
+
             services.AddDbContext<LocalContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("LocalDbConnection")));
 
