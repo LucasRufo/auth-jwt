@@ -17,7 +17,7 @@ namespace Auth.Biz.Core
 
             IConfigurationRoot configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(@Directory.GetCurrentDirectory() + "/../../../Projects/Auth.API/appsettings.json")
+                .AddJsonFile(@Directory.GetCurrentDirectory() + "/../../Projects/Auth.API/appsettings.json")
                 .Build();
 
             var key = Encoding.ASCII.GetBytes(configuration.GetSection("SecretKey").Value);

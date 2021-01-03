@@ -17,7 +17,7 @@ namespace Auth.Api.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult CriarUsuario(Usuario user)
         {
             var ret = _service.CriarUsuario(user);
