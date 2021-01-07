@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Solution\Auth\Auth.Data\Auth.Data.csproj" />
     <ProjectReference Include="..\Auth.Biz\Auth.Biz.csproj" />
   </ItemGroup>
 
