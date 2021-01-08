@@ -1,0 +1,103 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-container {
+    width: 800px;
+    height: 400px;
+    border-radius: 8px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.form-container {
+    width: 50%;
+    height: 100%;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+.input-login {
+    width: 70%;
+    min-width: 60%;
+    background-color: #eeeeee;
+    border-radius: 4px;
+    border: none;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 1px solid transparent;
+}
+
+.input-login:focus {
+    outline: none !important;
+    border: 1px solid #FF4B2B;
+    border-radius: 4px;
+}
+
+.btn-login {
+    margin-top: 20px;
+    padding: 8px 24px;
+    color: #ffffff;
+    background-color: #FF4B2B;
+    border: 1px solid #FF4B2B;
+    border-radius: 8px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    transition: 120ms ease-in;
+    cursor: pointer;
+}
+
+.text-login {
+    font-size: 14px;
+}
+
+.text-account {
+    position: absolute;
+    bottom: 8%;
+}
+
+.btn-login:hover {
+    background-color: #ff3916;
+}
+
+.side-container {
+    background: -webkit-linear-gradient(to right, #FF4B2B, #ff3b67);
+    background: linear-gradient(to right, #FF4B2B, #ff3b67);
+    width: 50%;
+    height: 100%;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.side-title {
+    color: #ffffff;
+    font-weight: bold;
+    letter-spacing: 2.5px;
+}
