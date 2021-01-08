@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Barlow', sans-serif;
+}
+
+button {
+    padding: 16px 36px;
+    border-radius: 4px;
+    background-color: #FF4B2B;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    transition: 120ms ease-in;
+    font-size: 20px;
+}
+
+button:hover {
+    background-color: #ff3916;
+}
+
+h1 {
+    font-size: 112px;
+    margin: 0;
+}
+
+h3 {
+    font-size: 28px;
+}
