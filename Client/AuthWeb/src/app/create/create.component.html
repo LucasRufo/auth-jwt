@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="login-container">
+        <div class="form-container">
+            <h2 class="title">Cadastro</h2>
+            <form class="form" [formGroup]="formUsuario">
+                <input type="text" formControlName="nome" class="input-login" placeholder="Nome" tabindex="1">
+                <input type="text" formControlName="documento" class="input-login" placeholder="Documento" tabindex="2">
+                <input type="email" formControlName="email" class="input-login" placeholder="Email" tabindex="3">
+                <input type="password" formControlName="senha" class="input-login" placeholder="Senha" tabindex="4">
+                <input type="password" formControlName="confirmacaoSenha" class="input-login"
+                    placeholder="Confirme sua senha" tabindex="5">
+
+                <div class="actions">
+                    <button [routerLink]="'/login'" class="btn-acao">Voltar</button>
+                    <button (click)="teste()" class="btn-acao">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

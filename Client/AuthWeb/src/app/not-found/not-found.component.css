@@ -31,3 +31,13 @@ h1 {
 h3 {
     font-size: 28px;
 }
+
+@media (max-width: 800px) {
+    h1 {
+        font-size: 96px;
+        margin: 0;
+    }
+    h3 {
+        font-size: 18px;
+    }
+}
