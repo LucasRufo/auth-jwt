@@ -4,15 +4,55 @@
             <h2 class="title">Cadastro</h2>
             <form class="form" [formGroup]="formUsuario">
                 <input type="text" formControlName="nome" class="input-login" placeholder="Nome" tabindex="1">
-                <input type="text" formControlName="documento" class="input-login" placeholder="Documento" tabindex="2">
+                <div class="error-group">
+                    <span class="error" *ngIf="nome?.errors?.required && nome?.dirty">O nome é
+                        obrigatório</span>
+                    <span class="error" *ngIf="nome?.errors?.minlength">O nome precisa ter no mínimo 3 caracteres</span>
+                    <span class="error" *ngIf="nome?.errors?.maxlength">O nome precisa ter no máximo 100
+                        caracteres</span>
+                </div>
+                <input type="text" formControlName="documento" class="input-login" placeholder="Documento" tabindex="2"
+                    cpf [textMask]="{mask: MASKS.cpf.textMask}">
+                <div class="error-group">
+                    <span class="error" *ngIf="documento?.errors?.required && documento?.dirty">O CPF é
+                        obrigatório</span>
+                    <span class="error" *ngIf="documento?.errors?.cpf">CPF inválido</span>
+                </div>
                 <input type="email" formControlName="email" class="input-login" placeholder="Email" tabindex="3">
+                <div class="error-group">
+                    <span class="error" *ngIf="email?.errors?.required && email?.dirty">O email é
+                        obrigatório</span>
+                    <span class="error" *ngIf="email?.errors?.email">Email inválido</span>
+                    <span class="error" *ngIf="email?.errors?.minlength">O email precisa ter no mínimo 5
+                        caracteres</span>
+                    <span class="error" *ngIf="email?.errors?.maxlength">O email precisa ter no máximo 60
+                        caracteres</span>
+                </div>
                 <input type="password" formControlName="senha" class="input-login" placeholder="Senha" tabindex="4">
+                <div class="error-group">
+                    <span class="error" *ngIf="senha?.errors?.required && senha?.dirty">A senha é
+                        obrigatória</span>
+                    <span class="error" *ngIf="senha?.errors?.minlength">A senha precisa ter no mínimo 8
+                        caracteres</span>
+                    <span class="error" *ngIf="senha?.errors?.maxlength">O senha precisa ter no máximo 40
+                        caracteres</span>
+                </div>
                 <input type="password" formControlName="confirmacaoSenha" class="input-login"
                     placeholder="Confirme sua senha" tabindex="5">
+                <div class="error-group">
+                    <span class="error" *ngIf="formUsuario.hasError('notSame') && confirmacaoSenha?.dirty">Senhas são
+                        diferentes</span>
+                    <span class=" error" *ngIf="confirmacaoSenha?.errors?.minlength">A confirmação da senha precisa ter
+                        no mínimo 8
+                        caracteres</span>
+                    <span class="error" *ngIf="confirmacaoSenha?.errors?.maxlength">A confirmação da senha ter no máximo
+                        40
+                        caracteres</span>
+                </div>
 
                 <div class="actions">
                     <button [routerLink]="'/login'" class="btn-acao">Voltar</button>
-                    <button (click)="teste()" class="btn-acao">Cadastrar</button>
+                    <button (click)="submitForm()" class="btn-acao">Cadastrar</button>
                 </div>
             </form>
         </div>

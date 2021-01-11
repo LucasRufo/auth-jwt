@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { CreateComponent } from './create/create.component';
+import { NgBrazil } from 'ng-brazil';
+import { TextMaskModule } from 'angular2-text-mask';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { CreateComponent } from './create/create.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgBrazil,
+    TextMaskModule
   ],
   providers: [
     { provide: APP_BASE_HREF, useValue: '/' },
