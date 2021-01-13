@@ -2,11 +2,15 @@
     <div class="login-container">
         <div class="form-container">
             <h2 class="title">Login</h2>
-            <form class="form">
-                <input type="email" class="input-login" placeholder="Email" tabindex="1">
-                <input type="password" class="input-login" placeholder="Password" tabindex="2">
+            <form class="form" [formGroup]="formLogin" (ngSubmit)="loginUsuario()">
+                <input type="email" formControlName="email" class="input-login" placeholder="Email" tabindex="1">
+                <input type="password" formControlName="senha" class="input-login" placeholder="Password" tabindex="2">
 
-                <button class="btn-login">Entrar</button>
+                <div *ngIf="hasError" class="alert">
+                    <span>Email ou senha inválidos</span>
+                </div>
+
+                <button class="btn-login" type="submit">Entrar</button>
 
                 <div class="text-account">
                     <div class="text-login">Não possui uma conta ainda? </div>
@@ -16,8 +20,7 @@
         </div>
         <div class="side-container">
             <div role="banner">
-                <img width="150" alt="Angular Logo"
-                    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+                <img width="150" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
 
                 <h3 class="side-title">AUTH ANGULAR</h3>
             </div>

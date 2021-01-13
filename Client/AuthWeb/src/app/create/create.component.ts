@@ -13,15 +13,13 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent {
 
   public MASKS = MASKS;
 
   formUsuario: FormGroup;
 
   usuario: Usuario;
-
-  return: Return;
 
   get nome() {
     return this.formUsuario.get("nome");
@@ -50,8 +48,6 @@ export class CreateComponent implements OnInit {
     private toast: ToastrService
   ) {
     this.usuario = { id: 0, nome: '', documento: '', email: '', senha: '' };
-
-    this.return = { isValid: true, erros: {}, object: {} };
 
     this.formUsuario = this.fb.group({
       id: 0,
@@ -83,8 +79,6 @@ export class CreateComponent implements OnInit {
     }, { validators: this.checkPasswords });
   }
 
-  ngOnInit(): void { }
-
   checkPasswords(group: FormGroup) {
     let pass = group?.get('senha')?.value;
     let confirmPass = group?.get('confirmacaoSenha')?.value;
@@ -92,7 +86,10 @@ export class CreateComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true }
   }
 
-  submitForm(): void {
+  criarUsuario(): void {
+    if (this.formUsuario.invalid)
+      return;
+
     let usuario: Usuario = Object.assign({}, this.formUsuario.value);
 
     this.usuarioService.criarUsuario(usuario)

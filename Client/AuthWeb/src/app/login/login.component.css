@@ -92,7 +92,7 @@ a {
 
 .text-account {
     position: absolute;
-    bottom: 8%;
+    bottom: 6%;
 }
 
 .btn-login:hover {
@@ -103,6 +103,31 @@ a {
     color: #ffffff;
     font-weight: bold;
     letter-spacing: 2.5px;
+}
+
+.alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    width: 70%;
+    margin-top: 6px;
+    background: #f8d7da;
+    color: #721c24;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.error-group {
+    width: 70%;
+    text-align: left;
+    margin-top: -5px;
+}
+
+.error {
+    font-size: 12px;
+    color: #ff3916;
+    margin-left: 1px;
 }
 
 @media (max-width: 860px) {
@@ -117,6 +142,9 @@ a {
         min-width: 300px;
     }
     .input-login {
+        width: 90%;
+    }
+    .alert {
         width: 90%;
     }
 }

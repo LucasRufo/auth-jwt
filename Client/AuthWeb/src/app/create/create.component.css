@@ -98,18 +98,6 @@ a {
     bottom: 8%;
 }
 
-.error-group {
-    width: 70%;
-    text-align: left;
-    margin-top: -5px;
-}
-
-.error {
-    font-size: 12px;
-    color: #ff3916;
-    margin-left: 1px;
-}
-
 @media (max-width: 860px) {
     .login-container {
         width: 80%;
