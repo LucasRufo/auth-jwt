@@ -1,16 +1,19 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { MASKS, NgBrazilValidators } from 'ng-brazil';
-import { Observable, Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { Return } from '../entities/return';
 import { Usuario } from '../entities/usuario';
 import { UsuarioService } from '../services/usuario.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit, OnDestroy {
+export class CreateComponent implements OnInit {
 
   public MASKS = MASKS;
 
@@ -18,7 +21,7 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   usuario: Usuario;
 
-  subscription: Subscription;
+  return: Return;
 
   get nome() {
     return this.formUsuario.get("nome");
@@ -42,11 +45,13 @@ export class CreateComponent implements OnInit, OnDestroy {
 
   constructor(
     private fb: FormBuilder,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private toast: ToastrService
   ) {
     this.usuario = { id: 0, nome: '', documento: '', email: '', senha: '' };
 
-    this.subscription = new Subscription();
+    this.return = { isValid: true, erros: {}, object: {} };
 
     this.formUsuario = this.fb.group({
       id: 0,
@@ -78,12 +83,7 @@ export class CreateComponent implements OnInit, OnDestroy {
     }, { validators: this.checkPasswords });
   }
 
-  ngOnInit(): void {
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+  ngOnInit(): void { }
 
   checkPasswords(group: FormGroup) {
     let pass = group?.get('senha')?.value;
@@ -92,19 +92,35 @@ export class CreateComponent implements OnInit, OnDestroy {
     return pass === confirmPass ? null : { notSame: true }
   }
 
-  submitForm() {
-    if (this.formUsuario.invalid)
-      return;
-
+  submitForm(): void {
     let usuario: Usuario = Object.assign({}, this.formUsuario.value);
 
-    this.subscription = this.usuarioService.criarUsuario(usuario).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log(error);
-      });
+    this.usuarioService.criarUsuario(usuario)
+      .pipe(take(1))
+      .subscribe(
+        (data: Return) => {
+          this.router.navigate(["/login"]);
+          this.showSuccess("Usuário cadastro com sucesso!");
+        },
+        error => {
+          Object.keys(error.error).forEach(prop => {
+            const formControl = this.formUsuario.get(prop.toLowerCase());
+            if (formControl) {
+              formControl.setErrors({
+                serverError: error.error[prop]
+              });
+            }
+          });
+        }
+      );
+  }
+
+  showSuccess(message: string) {
+    this.toast.success(message);
+  }
+
+  showError(message: string) {
+    this.toast.error(message);
   }
 
 }

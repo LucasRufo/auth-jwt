@@ -27,6 +27,7 @@
                         caracteres</span>
                     <span class="error" *ngIf="email?.errors?.maxlength">O email precisa ter no máximo 60
                         caracteres</span>
+                    <span class="error" *ngIf="email?.errors?.serverError">{{ email?.errors?.serverError }}</span>
                 </div>
                 <input type="password" formControlName="senha" class="input-login" placeholder="Senha" tabindex="4">
                 <div class="error-group">
@@ -42,17 +43,11 @@
                 <div class="error-group">
                     <span class="error" *ngIf="formUsuario.hasError('notSame') && confirmacaoSenha?.dirty">Senhas são
                         diferentes</span>
-                    <span class=" error" *ngIf="confirmacaoSenha?.errors?.minlength">A confirmação da senha precisa ter
-                        no mínimo 8
-                        caracteres</span>
-                    <span class="error" *ngIf="confirmacaoSenha?.errors?.maxlength">A confirmação da senha ter no máximo
-                        40
-                        caracteres</span>
                 </div>
 
                 <div class="actions">
                     <button [routerLink]="'/login'" class="btn-acao">Voltar</button>
-                    <button (click)="submitForm()" class="btn-acao">Cadastrar</button>
+                    <button [disabled]="formUsuario.invalid" (click)="submitForm()" class="btn-acao">Cadastrar</button>
                 </div>
             </form>
         </div>

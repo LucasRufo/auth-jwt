@@ -29,7 +29,7 @@ namespace Auth.Biz
 
         public Return CriarUsuario(Usuario user)
         {
-            UsuarioValidator validator = new UsuarioValidator();
+            UsuarioValidator validator = new UsuarioValidator(_context);
             ValidationResult results = validator.Validate(user);
 
             if (!results.IsValid)

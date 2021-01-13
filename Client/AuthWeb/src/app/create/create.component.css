@@ -76,6 +76,10 @@ a {
     background-color: #ff3916;
 }
 
+.btn-acao:disabled {
+    background-color: #ff674d;
+}
+
 .btn-acao:first-child {
     margin-right: 10px;
 }

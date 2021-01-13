@@ -17,7 +17,10 @@ namespace Auth.Data
         public Return(IList<ValidationFailure> errors)
         {
             foreach (var error in errors)
-                AddError(error.PropertyName, error.ErrorMessage);
+            {
+                if (Erros.Any(m => m.Key == error.PropertyName) == false)
+                    AddError(error.PropertyName, error.ErrorMessage);
+            }
         }
 
         public Return(object objeto)
