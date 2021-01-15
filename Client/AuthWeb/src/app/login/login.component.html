@@ -10,7 +10,7 @@
                     <span>Email ou senha inválidos</span>
                 </div>
 
-                <button class="btn-login" type="submit">Entrar</button>
+                <button class="btn-login" type="submit" [disabled]="!loaded">Entrar</button>
 
                 <div class="text-account">
                     <div class="text-login">Não possui uma conta ainda? </div>

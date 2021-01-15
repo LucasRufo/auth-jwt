@@ -78,6 +78,7 @@ a {
 
 .btn-acao:disabled {
     background-color: #ff674d;
+    cursor: initial;
 }
 
 .btn-acao:first-child {

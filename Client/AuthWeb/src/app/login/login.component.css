@@ -99,6 +99,11 @@ a {
     background-color: #ff3916;
 }
 
+.btn-login:disabled {
+    background-color: #ff674d;
+    cursor: initial;
+}
+
 .side-title {
     color: #ffffff;
     font-weight: bold;

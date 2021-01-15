@@ -12,13 +12,15 @@ import { JwtService } from '../services/jwt.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   formLogin: FormGroup;
 
   login: Login;
 
   hasError: boolean;
+
+  loaded: boolean;
 
   get email() {
     return this.formLogin.get("email");
@@ -39,10 +41,11 @@ export class LoginComponent {
 
     this.hasError = false;
 
+    this.loaded = true;
+
     this.formLogin = this.fb.group({
       email: ['', [
-        Validators.required,
-        Validators.email,
+        Validators.required
       ]],
       senha: ['', [
         Validators.required,
@@ -50,7 +53,13 @@ export class LoginComponent {
     });
   }
 
+  ngOnInit(): void {
+    this.jwtService.destroyToken();
+  }
+
   loginUsuario(): void {
+    this.loaded = false;
+
     let login: Login = Object.assign({}, this.formLogin.value);
 
     this.authService.auth(login)
@@ -58,12 +67,20 @@ export class LoginComponent {
       .subscribe(
         data => {
           this.jwtService.saveToken(data.token);
-          // this.router.navigate(["/login"]);
+          this.loaded = true;
+
+          this.router.navigate(["/logged"]);
+          this.showSuccess("Parabéns, você se logou!");
         },
         error => {
           this.hasError = true;
+          this.loaded = true;
         }
       );
+  }
+
+  showSuccess(message: string) {
+    this.toast.success(message);
   }
 
 }
