@@ -23,7 +23,7 @@ Utilizei no Front-End:
 - Ng-Brazil https://www.npmjs.com/package/ng-brazil
 - Ngx-Toastr https://www.npmjs.com/package/ngx-toastr
 
-## Para rodar a API
+## Para executar a API
 
 - Clone o projeto para sua máquina.
 
@@ -39,7 +39,7 @@ dotnet ef database update
 
 - Execute a aplicação na porta 44357
 
-## Para rodar o front-end
+## Para executar o front-end
 
 - Acesse a pasta ~\auth-jwt\Client\AuthWeb via terminal e execute o seguinte comando para baixar as dependências:
 
